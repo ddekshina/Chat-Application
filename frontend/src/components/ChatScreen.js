@@ -13,10 +13,9 @@ import {
 import MessageItem from './MessageItem';
 import socketService from '../utils/socket';
 
-const ChatScreen = () => {
+const ChatScreen = ({ username, onLogout }) => {
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState('');
-  const [username, setUsername] = useState('User' + Math.floor(Math.random() * 1000));
   const flatListRef = useRef(null);
 
   useEffect(() => {
@@ -65,7 +64,12 @@ const ChatScreen = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Chat App</Text>
-        <Text style={styles.usernameDisplay}>You: {username}</Text>
+        <View style={styles.userInfo}>
+          <Text style={styles.usernameDisplay}>Logged in as: {username}</Text>
+          <TouchableOpacity onPress={onLogout}>
+            <Text style={styles.logoutText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       
       <FlatList
@@ -111,17 +115,27 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#075E54',
     padding: 15,
-    alignItems: 'center',
   },
   headerTitle: {
     color: '#FFF',
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  userInfo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 5,
   },
   usernameDisplay: {
     color: '#ECECEC',
     fontSize: 12,
-    marginTop: 5,
+  },
+  logoutText: {
+    color: '#fff',
+    fontSize: 12,
+    textDecorationLine: 'underline',
   },
   messagesList: {
     flex: 1,
