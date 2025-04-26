@@ -1,6 +1,6 @@
 # Chat-Application
 
-A real-time chat application built with React Native for the frontend and Node.js for the backend, featuring user authentication, real-time messaging, and dynamic theming. Designed for seamless communication across devices, it aims to provide a user-friendly experience on both mobile and web platforms.
+A real-time chat application built with React Native for the frontend and Node.js for the backend, featuring real-time messaging and dynamic theming. Designed for seamless communication across devices, it aims to provide a user-friendly experience on both mobile and web platforms.
 
 ## Key Features
 
